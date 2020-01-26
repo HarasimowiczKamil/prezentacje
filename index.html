@@ -1,0 +1,395 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="node_modules/reveal.js/css/reset.css">
+    <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css">
+</head>
+<body lang="pl">
+<div class="reveal">
+    <div class="slides">
+        <section data-markdown>
+            # Nazwy
+
+            > Kamil Harasimowicz
+        </section>
+        <section>
+            <section data-markdown>
+                ## Notacja węgierska
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                ## Nazwy powinny przedstawiać intencje
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                ## Nazwy nie powinny wymagać komentarza
+            </section>
+            <section data-markdown>
+                ### słabo
+                ```
+                int time; // czas trwania w dniach
+                int timestamp; // czas utworzenia
+                ```
+            </section>
+            <section data-markdown>
+                ### lepiej
+                ```
+                int elapsedTimeInDays;
+                DateTime createdAt;
+                ```
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                ## Unikaj dezinformacji
+            </section>
+            <section data-markdown>
+                ### Unikaj wyrazów mogących kojarzyć się z czymś innym
+                * nazwy wzorców
+                * nazwy typów
+
+                ```
+                Collection orderArray;
+                ```
+            </section>
+            <section data-markdown>
+                ### lepiej
+                ```
+                Collection orderList;
+                Collection openOrders;
+                Collection orders;
+                ```
+            </section>
+
+            <section data-markdown>
+                ### Unikaj nazw nieznacznie się różniących
+                ```
+                int numberOfOrderFilteredByIssuerAccountId;
+                int numberOfOrderFilteredByPurchaserAccountId;
+                ```
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                ## Twórz wyraźne różnice
+            </section>
+            <section data-markdown>
+                ```
+                copyItems(Invoice i1, Invoice i2);
+                copyItems(Invoice source, Invoice destination);
+                ```
+            </section>
+            <section data-markdown>
+                ### Użyj dodatkowych słów ale z rozsądkiem
+                ```
+                UserGeneral
+                UserInfo
+                UserData
+                ```
+            </section>
+            <section data-markdown>
+                ### lepiej
+                ```
+                UserAuth
+                UserAddress
+                UserOrders
+                ```
+            </section>
+            <section data-markdown>
+                ### Nadmiarowe słowa
+
+                ```
+                str name
+                // vs
+                str nameString
+                str nameVariable
+                ...
+
+                /**
+                * @ORM\Entity
+                * @ORM\Table(name="userTable")
+                */
+                ```
+            </section>
+            <section data-markdown>
+                ### Nadmiarowe słowa
+                ```
+                issuer
+                // vs
+                issuerObject
+                ```
+
+                ```
+                moneyAmount
+                // vs
+                money
+                ```
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                ## Twórz nazwy które można wymówić
+            </section>
+            <section data-markdown>
+                ### Pogadaj o tym kodzie
+                ```
+                DateTime updatedymdhms;
+                int cntUserAdr;
+                str asdfnklernbkjsvsjdnvvbrek;
+                ```
+            </section>
+            <section data-markdown>
+                ![](img/macarena.jpg)
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                ## Nazwy powinny być łatwe do wyszukania
+            </section>
+            <section data-markdown>
+                ```
+                Order {
+                    const NEW_ORDER_STATUS;
+                    const PENDING_ORDER_STATUS;
+                    const NEW_TYPE;
+                    const OLD_TYPE;
+
+                    const STATUS_NEW;
+                    const STATUS_PENDING;
+                }
+                ```
+            </section>
+            <section data-markdown>
+                ## Unikaj użycia skalarów bez stałej zmiennej.
+                ```
+                // trudniej znaleźć wszystkie użycia 2 niż
+                const ORDER_AGE_TO_SETTLE_IN_DAYS = 42;
+                ```
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                ## Unikaj odwzorowania mentalnego
+            </section>
+            <section data-markdown>
+                ```
+                for (i=0; i< 10; ++i) // jest ok
+                for (j=0; j< 10; ++j) // jest ok
+                for (k=0; k< 10; ++k) // jest ok
+                for (l=0; l< 10; ++l) // nie jest ok
+                str h = 'http://example.com';
+                ```
+            </section>
+            <section data-markdown>
+                > Jedną z różnic pomiędzy bystrymi programistami a profesjonalistami jest to, że profesjonaliści rozumieją, że czytelność jest wszystkim. Profesjonaliści piszą kod zrozumiały dla innych.
+
+                "Czysty Kod" Robert C. Martin
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                ## Nazwy klas
+            </section>
+            <section data-markdown>
+                ### Nazwy klas rzeczowniki lub wyrażenia rzeczownikowe
+                ```
+                Customer
+                Order
+                Invoice
+
+                AddressParser
+                InvoiceGenerator
+                MessageSender
+                ```
+            </section>
+            <section data-markdown>
+                ### Unikaj w nazwach klas słów takich jak
+                * Processor
+                * Data
+                * Info
+                * Handler
+                * Service
+            </section>
+            <section data-markdown>
+                #### Co robią klasy:
+
+                ```
+                OrderProcessor
+                UserData
+                UserInfo
+                PaymentHandler
+                InvoiceService
+                ```
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                ### Korzystanie z nazw dziedziny
+
+                ```
+                BankTransfer
+                Invoice
+                ProForm
+                Vendor
+                Order
+                Purchaser
+                ```
+            </section>
+            <section data-markdown>
+                ### Techniczne elementy mogą mieć techniczne nazwy
+
+                ```
+                BankTransferRepository
+                InvoiceBuilder
+                MessageSenderStrategy
+                ```
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                ## Nazwy metod
+            </section>
+            <section data-markdown>
+                ### Nazwy metod to czasowniki lub wyrażenia czasownikowe
+                ```
+                employee.getName()
+                product.setSku('DOMAIN-1Y');
+
+                if (product.isDomain())
+                ```
+            </section>
+            <section data-markdown>
+                ### Jedno słowo na pojęcie
+                ```
+                userRepository.find(userId)
+                invoiceRepository.getById(invoiceId)
+                order.fetchId(orderId)
+                ```
+            </section>
+            <section data-markdown>
+                ### Jeden termin jedno zagadnienie
+                ```
+                void function add(item) {
+                    this.item += item;
+                }
+                void function append(item) {
+                    this.item[] = item;
+                }
+                void function insert(item) {
+                    this.repository.persist(item);
+                    this.repository.flush(item);
+                }
+                ```
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                ## Dodaj znaczący kontekst
+
+                ```
+                firstName;
+                lastName;
+                street;
+                houseNumber;
+                city;
+                state;
+                zipcode;
+                ```
+            </section>
+            <section data-markdown>
+                ## Poprzez dodanie przedrostka
+
+                ```
+                addrFirstName;
+                addrLastName;
+                addrStreet;
+                addrHouseNumber;
+                addrCity;
+                addrState;
+                addrZipcode;
+                ```
+            </section>
+            <section data-markdown>
+                ## Poprzez dodatkowy obiekt
+
+                ```
+                class Address {
+                    firstName;
+                    lastName;
+                    street;
+                    houseNumber;
+                    city;
+                    state;
+                    zipcode;
+                }
+                Address address;
+                ```
+            </section>
+            <section data-markdown>
+                ## Unikaj nadmiernego kontekstu
+                ```
+                OneToolsUser
+                OneToolsInvoice
+                OneToolsOrder
+                OneToolsPayment
+                ...
+                ```
+            </section>
+            <section data-markdown>
+                > Krótsze nazwy są zwykle lepsze niż dłuższe, o ile są one jasne.
+
+                "Czysty Kod" Robert C. Martin
+            </section>
+        </section>
+        <section>
+            ## Nazwy zdarzeń (Eventów)
+            ```
+            UserCreated
+            ProFormUpdated
+            CorrectionDeleted
+            ProFormEmailSent
+            ```
+            ### nie:
+            ```
+            UserEvent
+            PaymentEvent
+            OrderOccurred
+            ```
+        </section>
+        <section>
+            <section data-markdown>
+                ## Wysokopoziomowe nazwy komponentów (klas, metod, zmiennych) powinny odzwierciedlać intencję biznesową.
+
+                > Nazywaj klasy oraz operacje w taki sposób, aby opisywały swój cel lub działanie bez odwoływania się do środków, których do tego używają.
+                "Domain Driven Design" Eric Evans
+            </section>
+            <section>
+                ```
+                order.getPayments()
+                order.getPurchaserContactEmail()
+                mailer.send(proFormCreatedEmail)
+                ```
+            </section>
+        </section>
+        <section>
+            ## Nazwy modułów
+            Powinny przekazywać pewną historię.
+            Moduł wraz ze swoimi nazwami powinny odzwierciedlać wiedzę dziedzinową.
+        </section>
+    </div>
+</div>
+<script src="node_modules/reveal.js/js/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    dependencies: [
+      { src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true },
+      { src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    ]
+  });
+</script>
+</body>
+</html>
