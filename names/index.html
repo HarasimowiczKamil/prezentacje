@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="node_modules/reveal.js/css/reset.css">
     <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
     <link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css">
+    <style>
+        .reveal img { max-width: 60%; }
+    </style>
 </head>
 <body lang="pl">
 <div class="reveal">
@@ -15,7 +18,49 @@
         </section>
         <section>
             <section data-markdown>
+                ## Dlaczego tracić czas na wymyślanie nazw
+            </section>
+            <section data-markdown>
+                ### Na czym polega praca programisty
+
+                * pisanie nowych funkcjonalności
+                * modyfikowanie funkcjonalnosci
+                * naprawianie funkcjonalności
+                * odpowiadanie na pytania biznesowe
+            </section>
+            <section data-markdown>
+                ### Ile faktycznie jest czytania kodu?
+
+                | czynność      | czytanie | pisanie |
+                |---------------|----------|---------|
+                | tworzenie     |    +++   |    +++  |
+                | modyfikowanie |    +++   |    ++   |
+                | naprawianie   |    +++   |    +    |
+                | analizowanie  |    +++   |    -    |
+            </section>
+            <section data-markdown>
+                > W rzeczywistości stosunek czasu spędzanego na czytaniu do czasu spędzanego na pisaniu jest jak 10:1. Stale czytamy starszy kod, jest to część pracy przy pisaniu nowego.
+
+                "Czysty Kod" Robert C. Martin
+            </section>
+            <section>
+                <img src="img/focus.jpg" style="max-width: 45%;" />
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
                 ## Notacja węgierska
+
+                ```
+                int iNazwa
+                array aNazwa
+                ```
+
+                ##### IDE (JetBrains)
+
+                ```
+                [Ctrl] + [Q]
+                ```
             </section>
         </section>
         <section>
@@ -344,7 +389,7 @@
                 "Czysty Kod" Robert C. Martin
             </section>
         </section>
-        <section>
+        <section data-markdown>
             ## Nazwy zdarzeń (Eventów)
             ```
             UserCreated
@@ -374,10 +419,29 @@
                 ```
             </section>
         </section>
-        <section>
+        <section data-markdown>
             ## Nazwy modułów
             Powinny przekazywać pewną historię.
             Moduł wraz ze swoimi nazwami powinny odzwierciedlać wiedzę dziedzinową.
+        </section>
+        <section>
+            <section data-markdown>
+                ## Ile faktycznie możemy zyskać?
+            </section>
+            <section data-markdown>
+                ## Trochę matematyki
+
+                ```
+                ~80h - godzin na sprint (2tyg)
+                90% - czas spędzony na czytaniu kodu
+                160 * 0,9 = 144h
+                10% poprawmy czytelność tylko o tyle
+                144h * 0,1 = 14h // zysk z czytelniejszego kodu
+                ```
+            </section>
+            <section>
+                <img src="img/file_name.png" />
+            </section>
         </section>
     </div>
 </div>
