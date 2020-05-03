@@ -12,7 +12,7 @@
 <div class="reveal">
     <div class="slides">
         <section data-markdown>
-            # Nazwy
+            # Wszędzie te nazwy
 
             > Kamil Harasimowicz
         </section>
@@ -28,16 +28,16 @@
                 * naprawianie funkcjonalności
                 * odpowiadanie na pytania biznesowe
             </section>
-            <section data-markdown>
+            <!--<section data-markdown>
                 ### Ile faktycznie jest czytania kodu?
 
                 | czynność      | czytanie | pisanie |
-                |---------------|----------|---------|
+                |-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;|&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;|-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;|
                 | tworzenie     |    +++   |    +++  |
                 | modyfikowanie |    +++   |    ++   |
                 | naprawianie   |    +++   |    +    |
                 | analizowanie  |    +++   |    -    |
-            </section>
+            </section>-->
             <section data-markdown>
                 > W rzeczywistości stosunek czasu spędzanego na czytaniu do czasu spędzanego na pisaniu jest jak 10:1. Stale czytamy starszy kod, jest to część pracy przy pisaniu nowego.
 
@@ -67,13 +67,21 @@
             <section data-markdown>
                 ## Nazwy powinny przedstawiać intencje
             </section>
+            <section data-markdown>
+                ## Nazwa powinna:
+                * informować w jakim celu istnieje
+                * co robi
+                * jak jest używana
+
+                > Jeżeli nazwa wymaga komentarza to znaczy, że nie ilustruje intencji
+                "Czysty Kod" Robert C. Martin
+            </section>
         </section>
         <section>
             <section data-markdown>
                 ## Nazwy nie powinny wymagać komentarza
             </section>
             <section data-markdown>
-                ### słabo
                 ```
                 int time; // czas trwania w dniach
                 int timestamp; // czas utworzenia
@@ -98,6 +106,7 @@
 
                 ```
                 Collection orderArray;
+                int usernames;
                 ```
             </section>
             <section data-markdown>
@@ -181,9 +190,9 @@
             <section data-markdown>
                 ### Pogadaj o tym kodzie
                 ```
-                DateTime updatedymdhms;
+                string updatedymdhms;
                 int cntUserAdr;
-                str asdfnklernbkjsvsjdnvvbrek;
+                array filteredInvoicesFromLastMonthAndSentViaEmail;
                 ```
             </section>
             <section data-markdown>
@@ -227,6 +236,10 @@
                 for (l=0; l< 10; ++l) // nie jest ok
                 str h = 'http://example.com';
                 ```
+            </section>
+            <section data-markdown>
+                > Wiemy, że pracujemy na czystym kodzie, jeżeli każda procedura okaże się taką, jakiej się spodziewaliśmy. Można nazwać go również pięknym kodem, jeżeli wygląda, jakby ten język został stworzony do rozwiązania tego problemu.
+                Cunningham Ward
             </section>
             <section data-markdown>
                 > Jedną z różnic pomiędzy bystrymi programistami a profesjonalistami jest to, że profesjonaliści rozumieją, że czytelność jest wszystkim. Profesjonaliści piszą kod zrozumiały dla innych.
@@ -348,13 +361,13 @@
                 ## Poprzez dodanie przedrostka
 
                 ```
-                addrFirstName;
-                addrLastName;
-                addrStreet;
-                addrHouseNumber;
-                addrCity;
-                addrState;
-                addrZipcode;
+                addressFirstName;
+                addressLastName;
+                addressStreet;
+                addressHouseNumber;
+                addressCity;
+                addressState;
+                addressZipcode;
                 ```
             </section>
             <section data-markdown>
@@ -370,7 +383,7 @@
                     state;
                     zipcode;
                 }
-                Address address;
+                Address fiscalAddress;
                 ```
             </section>
             <section data-markdown>
@@ -406,7 +419,7 @@
         </section>
         <section>
             <section data-markdown>
-                ### Wysokopoziomowe nazwy komponentów (klas, metod, zmiennych) powinny odzwierciedlać intencję biznesową.
+                ### Wysokopoziomowe nazwy komponentów powinny odzwierciedlać intencję biznesową.
 
                 > Nazywaj klasy oraz operacje w taki sposób, aby opisywały swój cel lub działanie bez odwoływania się do środków, których do tego używają.
                 "Domain Driven Design" Eric Evans
@@ -434,9 +447,9 @@
                 ```
                 ~80h - godzin na sprint (2tyg)
                 90% - czas spędzony na czytaniu kodu
-                160 * 0,9 = 144h
+                80 * 0,9 = 72h
                 10% poprawmy czytelność tylko o tyle
-                144h * 0,1 = 14h // zysk z czytelniejszego kodu
+                72h * 0,1 = 7h // zysk z czytelniejszego kodu
                 ```
             </section>
             <section>
