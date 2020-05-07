@@ -5,7 +5,9 @@
     <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
     <link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css">
     <style>
-        .reveal img { max-width: 60%; }
+        .reveal img {
+            max-width: 60%;
+        }
     </style>
 </head>
 <body lang="pl">
@@ -28,28 +30,20 @@
                 * naprawianie funkcjonalności
                 * odpowiadanie na pytania biznesowe
             </section>
-            <!--<section data-markdown>
-                ### Ile faktycznie jest czytania kodu?
-
-                | czynność      | czytanie | pisanie |
-                |-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;|&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;|-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;|
-                | tworzenie     |    +++   |    +++  |
-                | modyfikowanie |    +++   |    ++   |
-                | naprawianie   |    +++   |    +    |
-                | analizowanie  |    +++   |    -    |
-            </section>-->
             <section data-markdown>
-                > W rzeczywistości stosunek czasu spędzanego na czytaniu do czasu spędzanego na pisaniu jest jak 10:1. Stale czytamy starszy kod, jest to część pracy przy pisaniu nowego.
+                > W rzeczywistości stosunek czasu spędzanego na czytaniu do czasu spędzanego na pisaniu jest jak 10:1.
+                Stale czytamy starszy kod, jest to część pracy przy pisaniu nowego.
 
                 "Czysty Kod" Robert C. Martin
             </section>
             <section>
-                <img src="img/focus.jpg" style="max-width: 45%;" />
+                <img src="img/focus.jpg" style="max-width: 45%;"/>
             </section>
         </section>
         <section>
             <section data-markdown>
                 ## Notacja węgierska
+                ###### Charles Simonyi
 
                 ```
                 int iNazwa
@@ -74,6 +68,7 @@
                 * jak jest używana
 
                 > Jeżeli nazwa wymaga komentarza to znaczy, że nie ilustruje intencji
+
                 "Czysty Kod" Robert C. Martin
             </section>
         </section>
@@ -88,11 +83,13 @@
                 ```
             </section>
             <section data-markdown>
-                ### lepiej
                 ```
                 int elapsedTimeInDays;
                 DateTime createdAt;
                 ```
+            </section>
+            <section>
+                <img src="img/todo.jpg"/>
             </section>
         </section>
         <section>
@@ -110,9 +107,8 @@
                 ```
             </section>
             <section data-markdown>
-                ### lepiej
                 ```
-                Collection orderList;
+                Collection orderCollection;
                 Collection openOrders;
                 Collection orders;
                 ```
@@ -145,7 +141,6 @@
                 ```
             </section>
             <section data-markdown>
-                ### lepiej
                 ```
                 UserAuth
                 UserAddress
@@ -166,20 +161,10 @@
                 * @ORM\Entity
                 * @ORM\Table(name="userTable")
                 */
-                ```
-            </section>
-            <section data-markdown>
-                ### Nadmiarowe słowa
-                ```
+
                 issuer
                 // vs
                 issuerObject
-                ```
-
-                ```
-                moneyAmount
-                // vs
-                money
                 ```
             </section>
         </section>
@@ -206,21 +191,20 @@
             <section data-markdown>
                 ```
                 Order {
-                    const NEW_ORDER_STATUS;
-                    const PENDING_ORDER_STATUS;
-                    const NEW_TYPE;
-                    const OLD_TYPE;
+                const NEW_ORDER_STATUS;
+                const PENDING_ORDER_STATUS;
+                const NEW_TYPE;
+                const OLD_TYPE;
 
-                    const STATUS_NEW;
-                    const STATUS_PENDING;
+                const STATUS_NEW;
+                const STATUS_PENDING;
                 }
                 ```
             </section>
             <section data-markdown>
-                ## Unikaj użycia skalarów bez stałej zmiennej.
+                ## Unikaj użycia skalarów bez stałej zmiennej
                 ```
-                // trudniej znaleźć wszystkie użycia 2 niż
-                const ORDER_AGE_TO_SETTLE_IN_DAYS = 42;
+                const SHIPPING_DELAY_IN_MINUTES = 15
                 ```
             </section>
         </section>
@@ -230,19 +214,24 @@
             </section>
             <section data-markdown>
                 ```
-                for (i=0; i< 10; ++i) // jest ok
-                for (j=0; j< 10; ++j) // jest ok
-                for (k=0; k< 10; ++k) // jest ok
-                for (l=0; l< 10; ++l) // nie jest ok
+                for (i = 0; i < 10; ++i)
+                for (j = 0; j < 10; ++j)
+                for (k = 0; k < 10; ++k)
+
+                for (l = 0; l < 10; ++l)
                 str h = 'http://example.com';
                 ```
             </section>
             <section data-markdown>
-                > Wiemy, że pracujemy na czystym kodzie, jeżeli każda procedura okaże się taką, jakiej się spodziewaliśmy. Można nazwać go również pięknym kodem, jeżeli wygląda, jakby ten język został stworzony do rozwiązania tego problemu.
+                > Wiemy, że pracujemy na czystym kodzie, jeżeli każda procedura okaże się taką, jakiej się
+                spodziewaliśmy. Można nazwać go również pięknym kodem, jeżeli wygląda, jakby ten język został stworzony
+                do rozwiązania tego problemu.
+
                 Cunningham Ward
             </section>
             <section data-markdown>
-                > Jedną z różnic pomiędzy bystrymi programistami a profesjonalistami jest to, że profesjonaliści rozumieją, że czytelność jest wszystkim. Profesjonaliści piszą kod zrozumiały dla innych.
+                > Jedną z różnic pomiędzy bystrymi programistami a profesjonalistami jest to, że profesjonaliści
+                rozumieją, że czytelność jest wszystkim. Profesjonaliści piszą kod zrozumiały dla innych.
 
                 "Czysty Kod" Robert C. Martin
             </section>
@@ -420,22 +409,101 @@
         <section>
             <section data-markdown>
                 ### Wysokopoziomowe nazwy komponentów powinny odzwierciedlać intencję biznesową.
+            </section>
+            <section data-markdown>
+                > Nazywaj klasy oraz operacje w taki sposób, aby opisywały swój cel lub działanie bez odwoływania się do
+                środków, których do tego używają.
 
-                > Nazywaj klasy oraz operacje w taki sposób, aby opisywały swój cel lub działanie bez odwoływania się do środków, których do tego używają.
                 "Domain Driven Design" Eric Evans
             </section>
-            <section>
+            <section data-markdown>
                 ```
-                order.getPayments()
-                order.getPurchaserContactEmail()
+                invoice.getPayments()
+                proForm.getPurchaserContactEmail()
                 mailer.send(proFormCreatedEmail)
                 ```
+            </section>
+            <section>
+                <img src="img/it_depends.jpeg"/>
             </section>
         </section>
         <section data-markdown>
             ## Nazwy modułów
             Powinny przekazywać pewną historię.
             Moduł wraz ze swoimi nazwami powinny odzwierciedlać wiedzę dziedzinową.
+        </section>
+        <section>
+            <section data-markdown>
+                ## Trochę kodu
+            </section>
+            <section data-markdown>
+                ```php
+                function filterOrders()
+                {
+                    $orders = [];
+                    foreach($this->orders as $order) {
+                        if($order->status == 'CL')
+                            $orders[] = $order;
+                    }
+                    return $orders;
+                }
+                ```
+            </section>
+            <section data-markdown>
+                ```php
+                function filterOrdersByStatus($status)
+                {
+                    $orders = [];
+                    foreach($this->orders as $order) {
+                        if($order->status == $status)
+                            $orders[] = $order;
+                    }
+                    return $orders;
+                }
+                ```
+            </section>
+            <section data-markdown>
+                ```php
+                function getFinishedOrders()
+                {
+                    $paidOrders = [];
+                    foreach($this->orders as $order) {
+                        if($order->isClosed())
+                            $paidOrders[] = $order;
+                    }
+
+                    return $paidOrders;
+                }
+                // ||
+                function getFinishedOrders()
+                {
+                    return $this->filterOrdersByStatus(self::STATUS_CLOSED);
+                }
+                ```
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                ## Przyczyny
+            </section>
+            <section>
+                <h3>Zbytnie uogólnienie</h3>
+
+                <img src="img/dzik.jpg" height="500px"/>
+            </section>
+            <section>
+                <h3>Brak kontekstu</h3>
+
+                <img src="img/zasadzka.jpg" height="500px"/>
+            </section>
+            <section>
+                <h3>Zbyt wczesne nazwy</h3>
+
+                <img src="img/wildebeast.png"/>
+            </section>
+            <section>
+                <img src="img/replace%20all.png"/>
+            </section>
         </section>
         <section>
             <section data-markdown>
@@ -453,7 +521,7 @@
                 ```
             </section>
             <section>
-                <img src="img/file_name.png" />
+                <img src="img/file_name.png"/>
             </section>
         </section>
         <section>
@@ -461,7 +529,7 @@
                 ## Pytania ?
             </section>
             <section>
-                <img src="img/thats%20all%20folks.jpg" />
+                <img src="img/thats%20all%20folks.jpg"/>
             </section>
         </section>
     </div>
@@ -470,9 +538,17 @@
 <script>
   Reveal.initialize({
     dependencies: [
-      { src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true },
-      { src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-      { src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      {src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true},
+      {
+        src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function () {
+          return !!document.querySelector('[data-markdown]');
+        }
+      },
+      {
+        src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function () {
+          return !!document.querySelector('[data-markdown]');
+        }
+      },
     ]
   });
 </script>
